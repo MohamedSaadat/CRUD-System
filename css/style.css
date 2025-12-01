@@ -1,0 +1,13 @@
+textarea {
+  resize: none;
+}
+th,td{
+  vertical-align: middle;
+}
+.table-active {
+    --bs-table-color-state: #fff;
+    --bs-table-bg-state: #7fc5a4;
+}
+img{
+  width: 100px;
+}
