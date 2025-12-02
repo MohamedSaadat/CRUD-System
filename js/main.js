@@ -3,6 +3,7 @@ var userName = document.getElementById("exampleFormControlInput1");
 var userEmail = document.getElementById("exampleFormControlInput2");
 var userPassword = document.getElementById("exampleFormControlInput3");
 var userphoto = document.getElementById("exampleFormControlInput4");
+var searchInput = document.getElementById("exampleFormControlInput5");
 var userDescription = document.getElementById("exampleFormControlTextarea1");
 var signInButton = document.getElementById("signIn");
 var deleteButton = document.getElementById("delete");
@@ -37,6 +38,7 @@ function signIn() {
 // -------------------- #2 Retrieve & localStorage ------------------------
 function retrieveUsersList() {
   localStorage.setItem("Users List", JSON.stringify(usersList));
+  // هنا هنعمل تغير ف localstorage وبعده يظهر الداتا افضل من تكراره ف كل عملية
   var allUsers = ``;
   for (let i = 0; i < usersList.length; i++) {
     allUsers += `
@@ -58,7 +60,13 @@ function deleteUser(userIndex) {
   usersList.splice(userIndex, 1);
   retrieveUsersList();
 }
+// -------------------- #5 Search ------------------------
+function search() {
+  var searchInputValue = searchInput.value;
+  console.log(searchInputValue);
+}
 // -------------------- Events "click" -----------------------------
 signInButton.addEventListener("click", signIn);
+searchInput.addEventListener("input", search);
 // deleteButton.addEventListener("click", deleteUser);
-/* الايفنت ده مش هيشتغل عشان مش موجود فى html هو بيضاف من ال js ف احسن حاجة نعمل onclick */
+// الايفنت ده مش هيشتغل عشان مش موجود فى html هو بيضاف من ال js ف احسن حاجة نعمل onclick
