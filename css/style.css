@@ -4,6 +4,10 @@ textarea {
 th,td{
   vertical-align: middle;
 }
+.del{
+  text-align: center;
+  cursor: pointer;
+}
 img{
   width: 100px;
 }

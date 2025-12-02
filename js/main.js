@@ -1,12 +1,27 @@
-// initialization
+// ------------------------ initialization --------------------------------
 var userName = document.getElementById("exampleFormControlInput1");
 var userEmail = document.getElementById("exampleFormControlInput2");
 var userPassword = document.getElementById("exampleFormControlInput3");
 var userphoto = document.getElementById("exampleFormControlInput4");
 var userDescription = document.getElementById("exampleFormControlTextarea1");
-var button = document.getElementById("button");
-// ------------------------ #1 Create --------------------------------
+var signInButton = document.getElementById("signIn");
+var deleteButton = document.getElementById("delete");
 var usersList = [];
+var storage = JSON.parse(localStorage.getItem("Users List"));
+
+// ------------------------ Clear inputs --------------------------------
+function clear() {
+  userName.value = "";
+  userEmail.value = "";
+  userPassword.value = "";
+  userphoto.value = "";
+  userDescription.value = "";
+}
+// ------------------------ #1 Create --------------------------------
+if (storage) {
+  usersList = storage;
+  retrieveUsersList();
+}
 function signIn() {
   var user = {
     name: userName.value,
@@ -16,25 +31,34 @@ function signIn() {
     description: userDescription.value,
   };
   usersList.push(user);
-    retrieveUserList();
-  console.log(usersList);
+  clear();
+  retrieveUsersList();
 }
-// -------------------- #2 Retrieve ------------------------
-function retrieveUserList() {
+// -------------------- #2 Retrieve & localStorage ------------------------
+function retrieveUsersList() {
+  localStorage.setItem("Users List", JSON.stringify(usersList));
   var allUsers = ``;
   for (let i = 0; i < usersList.length; i++) {
     allUsers += `
     <tr>
-        <th>${i + 1}</th>
-        <td>${usersList[i].userName}</td>
-        <td>${usersList[i].userEmail}</td>
-        <td>${usersList[i].userPassword}</td>
-        <td>${usersList[i].userphoto}</td>
-        <td>${usersList[i].userDescription}</td>
+    <th>${i + 1}</th>
+    <td>${usersList[i].name}</td>
+    <td>${usersList[i].email}</td>
+    <td>${usersList[i].password}</td>
+    <td>${usersList[i].photo}</td>
+    <td>${usersList[i].description}</td>
+    <td id="delete" class="del"><i class="fa-solid fa-trash" style="color: #ff0000;" onclick="deleteUser(${i})"></i></td>
     </tr>
     `;
   }
   document.getElementById("usersList").innerHTML = allUsers;
 }
-// --------------------------------------------------------
-button.addEventListener("click", signIn);
+// -------------------- #3 Delete ------------------------
+function deleteUser(userIndex) {
+  usersList.splice(userIndex, 1);
+  retrieveUsersList();
+}
+// -------------------- Events "click" -----------------------------
+signInButton.addEventListener("click", signIn);
+// deleteButton.addEventListener("click", deleteUser);
+/* الايفنت ده مش هيشتغل عشان مش موجود فى html هو بيضاف من ال js ف احسن حاجة نعمل onclick */
