@@ -42,15 +42,15 @@ function retrieveUsersList() {
   var allUsers = ``;
   for (let i = 0; i < usersList.length; i++) {
     allUsers += `
-    <tr>
-    <th>${i + 1}</th>
-    <td>${usersList[i].name}</td>
-    <td>${usersList[i].email}</td>
-    <td>${usersList[i].password}</td>
-    <td>${usersList[i].photo}</td>
-    <td>${usersList[i].description}</td>
-    <td id="delete" class="del"><i class="fa-solid fa-trash" style="color: #ff0000;" onclick="deleteUser(${i})"></i></td>
-    </tr>
+      <tr>
+      <th>${i + 1}</th>
+      <td>${usersList[i].name}</td>
+      <td>${usersList[i].email}</td>
+      <td>${usersList[i].password}</td>
+      <td>${usersList[i].photo}</td>
+      <td>${usersList[i].description}</td>
+      <td id="delete" class="del"><i class="fa-solid fa-trash" style="color: #ff0000;" onclick="deleteUser(${i})"></i></td>
+      </tr>
     `;
   }
   document.getElementById("usersList").innerHTML = allUsers;
@@ -63,7 +63,75 @@ function deleteUser(userIndex) {
 // -------------------- #5 Search ------------------------
 function search() {
   var searchInputValue = searchInput.value;
-  console.log(searchInputValue);
+  var allUsers = ``;
+  for (let i = 0; i < usersList.length; i++) {
+    // name
+    if (
+      usersList[i].name.toLowerCase().includes(searchInputValue.toLowerCase())
+    ) {
+      allUsers += `
+        <tr>
+        <th>${i + 1}</th>
+        <td>${usersList[i].name}</td>
+        <td>${usersList[i].email}</td>
+        <td>${usersList[i].password}</td>
+        <td>${usersList[i].photo}</td>
+        <td>${usersList[i].description}</td>
+        <td id="delete" class="del"><i class="fa-solid fa-trash" style="color: #ff0000;" onclick="deleteUser(${i})"></i></td>
+        </tr>
+    `;
+      // email
+    } else if (
+      usersList[i].email.toLowerCase().includes(searchInputValue.toLowerCase())
+    ) {
+      allUsers += `
+        <tr>
+        <th>${i + 1}</th>
+        <td>${usersList[i].name}</td>
+        <td>${usersList[i].email}</td>
+        <td>${usersList[i].password}</td>
+        <td>${usersList[i].photo}</td>
+        <td>${usersList[i].description}</td>
+        <td id="delete" class="del"><i class="fa-solid fa-trash" style="color: #ff0000;" onclick="deleteUser(${i})"></i></td>
+        </tr>
+    `;
+      // password
+    } else if (
+      usersList[i].password
+        .toLowerCase()
+        .includes(searchInputValue.toLowerCase())
+    ) {
+      allUsers += `
+        <tr>
+        <th>${i + 1}</th>
+        <td>${usersList[i].name}</td>
+        <td>${usersList[i].email}</td>
+        <td>${usersList[i].password}</td>
+        <td>${usersList[i].photo}</td>
+        <td>${usersList[i].description}</td>
+        <td id="delete" class="del"><i class="fa-solid fa-trash" style="color: #ff0000;" onclick="deleteUser(${i})"></i></td>
+        </tr>
+    `;
+      // description
+    } else if (
+      usersList[i].description
+        .toLowerCase()
+        .includes(searchInputValue.toLowerCase())
+    ) {
+      allUsers += `
+        <tr>
+        <th>${i + 1}</th>
+        <td>${usersList[i].name}</td>
+        <td>${usersList[i].email}</td>
+        <td>${usersList[i].password}</td>
+        <td>${usersList[i].photo}</td>
+        <td>${usersList[i].description}</td>
+        <td id="delete" class="del"><i class="fa-solid fa-trash" style="color: #ff0000;" onclick="deleteUser(${i})"></i></td>
+        </tr>
+    `;
+    }
+  }
+  document.getElementById("usersList").innerHTML = allUsers;
 }
 // -------------------- Events "click" -----------------------------
 signInButton.addEventListener("click", signIn);
