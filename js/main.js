@@ -8,7 +8,6 @@ var userDescription = document.getElementById("exampleFormControlTextarea1");
 var signInButton = document.getElementById("signIn");
 var updateButton = document.getElementById("update");
 // var deleteButton = document.getElementById("delete");
-// var deleteButton = document.getElementById("delete");
 var usersList = [];
 var userIndex;
 var storage = JSON.parse(localStorage.getItem("Users List"));
@@ -186,5 +185,15 @@ signInButton.addEventListener("click", signIn);
 searchInput.addEventListener("input", search);
 updateButton.addEventListener("click", updateUser);
 // deleteButton.addEventListener("click", deleteUser);
-// deleteButton.addEventListener("click", deleteUser);
 // الايفنت ده مش هيشتغل عشان مش موجود فى html هو بيضاف من ال js ف احسن حاجة نعمل onclick
+
+
+
+
+/*
+1- سطر رقم 40                                                    
+2- سطر رقم 70                                                    
+3- سطر رقم 104                                                   
+4- سطر رقم 10و187                                                
+5- console.log(typeof(userName.value)) = string ازاى اخليه number
+*/
