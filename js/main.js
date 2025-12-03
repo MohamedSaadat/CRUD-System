@@ -177,7 +177,6 @@ function search() {
 }
 // -------------------- Events -----------------------------
 if (storage) {
-  updateButton.classList.add("d-none");
   usersList = storage;
   retrieveUsersList();
 }
