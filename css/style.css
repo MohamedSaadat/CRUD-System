@@ -1,13 +1,24 @@
 textarea {
   resize: none;
 }
-th,td{
+th,
+td {
   vertical-align: middle;
 }
-.del{
+.mark,
+mark {
+  color: white;
+  background-color: green;
+}
+.iconBTN {
   text-align: center;
   cursor: pointer;
 }
-img{
+img {
   width: 100px;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
 }
